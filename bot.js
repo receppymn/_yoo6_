@@ -16,10 +16,10 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 fs.readdir('./komutlar/', (err, files) => {
   if (err) console.error(err);
-  log(`${files.length} komut yüklenecek.`);
+  log(`${files.length} komut yÃ¼klenecek.`);
   files.forEach(f => {
     let props = require(`./komutlar/${f}`);
-    log(`Yüklenen komut: ${props.help.name}.`);
+    log(`YÃ¼klenen komut: ${props.help.name}.`);
     client.commands.set(props.help.name, props);
     props.conf.aliases.forEach(alias => {
       client.aliases.set(alias, props.help.name);
@@ -80,13 +80,13 @@ client.unload = command => {
 
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
-    msg.reply('Aleyküm Selam,  Hoþgeldin :D');
+    msg.reply('AleykÃ¼m Selam,  HoÃ¾geldin :D');
   }
 });
 
 client.on('message', msg => {
-  if (msg.content.toLowerCase() === 'hayýrsýz bot') {
-    msg.reply('**Öyle Olsun :sob: :sob:** ');
+  if (msg.content.toLowerCase() === 'hayÃ½rsÃ½z bot') {
+    msg.reply('**Ã–yle Olsun :sob: :sob:** ');
   }
 });
 
@@ -96,7 +96,7 @@ client.on('message', msg => {
   }
 });
 client.on('message', msg => {
-  if (msg.content === 'TÜRK') {
+  if (msg.content === 'TÃœRK') {
     msg.reply('https://www.youtube.com/watch?v=_zKPYbgeiog');
   }
 });
@@ -124,4 +124,4 @@ client.on('error', e => {
   console.log(chalk.bgRed(e.replace(regToken, 'that was redacted')));
 });
 
-client.login(ayarlar.token);
+client.login(process.env.BOT-TOKEN);
